@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Táblázat Példa</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="table.js" defer></script>
 </head>
 <body>
     <header>
@@ -29,6 +30,14 @@
         <div class="content">
             <h2>Táblázat Példa</h2>
             <p>Adatok kezelése JavaScripttel.</p>
+            <h3>Adatok bevitele</h3>
+            <form id="dataForm">
+                <input type="text" id="nameInput" placeholder="Név" required minlength="2" maxlength="50">
+                <input type="number" id="ageInput" placeholder="Életkor" required min="1" max="120">
+                <input type="text" id="cityInput" placeholder="Város" required minlength="2" maxlength="50">
+                <input type="text" id="occupationInput" placeholder="Foglalkozás" required minlength="2" maxlength="50">
+                <button type="submit">Sor hozzáadása</button>
+            </form>
             <table id="dataTable">
                 <thead>
                     <tr>
