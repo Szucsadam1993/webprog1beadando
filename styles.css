@@ -107,6 +107,26 @@ button:hover {
     background-color: #45a049;
 }
 
+/* Szerkesztés és Törlés gombok */
+.edit-btn {
+    background-color: #2196F3;
+    color: white;
+    margin-right: 5px;
+}
+
+.edit-btn:hover {
+    background-color: #1976D2;
+}
+
+.delete-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #da190b;
+}
+
 /* Táblázatok */
 table {
     border-collapse: collapse;
@@ -125,9 +145,19 @@ th {
     background-color: #f2f2f2;
 }
 
+td button {
+    padding: 5px 10px;
+    font-size: 0.9em;
+}
+
 /* Canvas */
 canvas {
     max-width: 100%;
+    margin: 20px 0;
+}
+
+/* SVG */
+svg {
     margin: 20px 0;
 }
 

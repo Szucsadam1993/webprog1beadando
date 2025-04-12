@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX - Web-programozás 1</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Web-programozás-1 Előadás Házi feladat</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Kezdőlap</a></li>
+            <li><a href="table.html">Táblázat</a></li>
+            <li><a href="html5.html">HTML5</a></li>
+            <li><a href="chart.html">ChartJS</a></li>
+            <li><a href="ajax.html" class="active">AJAX</a></li>
+            <li><a href="oojs.html">OOJS</a></li>
+            <li><a href="react.html">React</a></li>
+        </ul>
+    </nav>
+    <aside>
+        <h2>Információ</h2>
+        <p>Ez az oldal AJAX segítségével kér le adatokat.</p>
+    </aside>
+    <div class="content">
+        <h2>AJAX Példa</h2>
+        <button onclick="loadData()">Adatok betöltése</button>
+        <ul id="userList"></ul>
+        <script>
+            function loadData() {
+                const xhr = new XMLHttpRequest();
+                xhr.open("GET", "https://jsonplaceholder.typicode.com/users", true);
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        const users = JSON.parse(xhr.responseText);
+                        const userList = document.getElementById("userList");
+                        users.forEach(user => {
+                            const li = document.createElement("li");
+                            li.textContent = user.name;
+                            userList.appendChild(li);
+                        });
+                    }
+                };
+                xhr.send();
+            }
+        </script>
+    </div>
+    <footer>
+        <p>Készítette: Szűcs Ádám (FYOVDT)</p>
+    </footer>
+</body>
+</html>

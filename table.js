@@ -14,14 +14,27 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: 'Eszter', age: 28, city: 'Pécs', occupation: 'Marketinges' },
     ];
 
+    let editingIndex = null;
+
     function renderTable() {
         dataTableBody.innerHTML = '';
-        data.forEach(item => {
+        data.forEach((item, index) => {
             const row = dataTableBody.insertRow();
             row.insertCell(0).textContent = item.name;
             row.insertCell(1).textContent = item.age;
             row.insertCell(2).textContent = item.city;
             row.insertCell(3).textContent = item.occupation;
+            const actionsCell = row.insertCell(4);
+            const editButton = document.createElement('button');
+            editButton.textContent = 'Szerkeszt';
+            editButton.className = 'edit-btn';
+            editButton.addEventListener('click', () => editRow(index));
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Töröl';
+            deleteButton.className = 'delete-btn';
+            deleteButton.addEventListener('click', () => deleteRow(index));
+            actionsCell.appendChild(editButton);
+            actionsCell.appendChild(deleteButton);
         });
     }
 
@@ -37,10 +50,36 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        data.push({ name, age, city, occupation });
+        const newEntry = { name, age, city, occupation };
+
+        if (editingIndex !== null) {
+            data[editingIndex] = newEntry;
+            editingIndex = null;
+        } else {
+            data.push(newEntry);
+        }
+
         renderTable();
         dataForm.reset();
     });
+
+    function editRow(index) {
+        editingIndex = index;
+        const item = data[index];
+        document.getElementById('nameInput').value = item.name;
+        document.getElementById('ageInput').value = item.age;
+        document.getElementById('cityInput').value = item.city;
+        document.getElementById('occupationInput').value = item.occupation;
+    }
+
+    function deleteRow(index) {
+        if (confirm('Biztosan törölni szeretnéd ezt a sort?')) {
+            data.splice(index, 1);
+            editingIndex = null;
+            dataForm.reset();
+            renderTable();
+        }
+    }
 
     renderTable();
 });

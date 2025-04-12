@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChartJS - Web-programozás 1</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Web-programozás-1 Előadás Házi feladat</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Kezdőlap</a></li>
+            <li><a href="table.html">Táblázat</a></li>
+            <li><a href="html5.html">HTML5</a></li>
+            <li><a href="chart.html" class="active">ChartJS</a></li>
+            <li><a href="ajax.html">AJAX</a></li>
+            <li><a href="oojs.html">OOJS</a></li>
+            <li><a href="react.html">React</a></li>
+        </ul>
+    </nav>
+    <aside>
+        <h2>Információ</h2>
+        <p>Ez az oldal egy egyszerű grafikont mutat be Chart.js segítségével.</p>
+    </aside>
+    <div class="content">
+        <h2>Chart.js Példa</h2>
+        <canvas id="myChart"></canvas>
+        <script>
+            const ctx = document.getElementById("myChart").getContext("2d");
+            new Chart(ctx, {
+                type: "bar",
+                data: {
+                    labels: ["Január", "Február", "Március"],
+                    datasets: [{
+                        label: "Értékesítés",
+                        data: [12, 19, 3],
+                        backgroundColor: "rgba(75, 192, 192, 0.2)",
+                        borderColor: "rgba(75, 192, 192, 1)",
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        </script>
+    </div>
+    <footer>
+        <p>Készítette: Szűcs Ádám (FYOVDT)</p>
+    </footer>
+</body>
+</html>
