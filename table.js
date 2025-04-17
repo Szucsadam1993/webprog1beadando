@@ -1,13 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     const dataTableBody = document.getElementById('dataTableBody');
     const dataForm = document.getElementById('dataForm');
+    const filterName = document.getElementById('filterName');
+    const filterAge = document.getElementById('filterAge');
+    const filterCity = document.getElementById('filterCity');
+    const filterOccupation = document.getElementById('filterOccupation');
 
-    if (!dataTableBody || !dataForm) {
+    if (!dataTableBody || !dataForm || !filterName || !filterAge || !filterCity || !filterOccupation) {
         console.error('Hiba: Nem található egy vagy több szükséges DOM elem!');
         return;
     }
 
-    let data = [
+    let data = JSON.parse(localStorage.getItem('tableData')) || [
         { name: 'Lilla', age: 15, city: 'Budapest', occupation: 'Tanuló' },
         { name: 'Anna', age: 22, city: 'Debrecen', occupation: 'Egyetemi hallgató' },
         { name: 'Péter', age: 30, city: 'Szeged', occupation: 'Programozó' },
@@ -16,9 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let editingIndex = null;
 
-    function renderTable() {
+    function renderTable(filteredData = data) {
         dataTableBody.innerHTML = '';
-        data.forEach((item, index) => {
+        filteredData.forEach((item, index) => {
             const row = dataTableBody.insertRow();
             row.insertCell(0).textContent = item.name;
             row.insertCell(1).textContent = item.age;
@@ -59,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
             data.push(newEntry);
         }
 
+        localStorage.setItem('tableData', JSON.stringify(data));
         renderTable();
         dataForm.reset();
     });
@@ -77,9 +82,53 @@ document.addEventListener('DOMContentLoaded', () => {
             data.splice(index, 1);
             editingIndex = null;
             dataForm.reset();
+            localStorage.setItem('tableData', JSON.stringify(data));
             renderTable();
         }
     }
+
+    document.querySelectorAll('.sortable').forEach(header => {
+        header.addEventListener('click', () => {
+            const column = header.dataset.column;
+            const isAscending = !header.classList.contains('asc');
+            data.sort((a, b) => {
+                const valueA = a[column];
+                const valueB = b[column];
+                if (typeof valueA === 'number') {
+                    return isAscending ? valueA - valueB : valueB - valueA;
+                }
+                return isAscending
+                    ? valueA.localeCompare(valueB)
+                    : valueB.localeCompare(valueA);
+            });
+            document.querySelectorAll('.sortable').forEach(h => h.classList.remove('asc', 'desc'));
+            header.classList.add(isAscending ? 'asc' : 'desc');
+            renderTable();
+        });
+    });
+
+    function applyFilters() {
+        const nameFilter = filterName.value.toLowerCase();
+        const ageFilter = filterAge.value;
+        const cityFilter = filterCity.value.toLowerCase();
+        const occupationFilter = filterOccupation.value.toLowerCase();
+
+        const filteredData = data.filter(item => {
+            return (
+                (nameFilter === '' || item.name.toLowerCase().includes(nameFilter)) &&
+                (ageFilter === '' || item.age.toString() === ageFilter) &&
+                (cityFilter === '' || item.city.toLowerCase().includes(cityFilter)) &&
+                (occupationFilter === '' || item.occupation.toLowerCase().includes(occupationFilter))
+            );
+        });
+
+        renderTable(filteredData);
+    }
+
+    filterName.addEventListener('input', applyFilters);
+    filterAge.addEventListener('input', applyFilters);
+    filterCity.addEventListener('input', applyFilters);
+    filterOccupation.addEventListener('input', applyFilters);
 
     renderTable();
 });

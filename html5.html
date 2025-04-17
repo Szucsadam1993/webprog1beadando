@@ -29,8 +29,31 @@
         </aside>
         <div class="content">
             <h2>HTML5 Példák</h2>
+            <h3>Web Storage (localStorage)</h3>
+            <input id="storageInput" placeholder="Adat mentése">
+            <button onclick="saveStorage()">Mentés</button>
+            <div id="storageOutput"></div>
+            <h3>Web Workers</h3>
+            <button onclick="startWorker()">Számítás indítása</button>
+            <p id="workerOutput"></p>
+            <h3>Server-Sent Events</h3>
+            <p id="sseOutput">Kapcsolódás a szerverhez...</p>
+            <h3>Geolocation API</h3>
+            <button onclick="getLocation()">Helyzet lekérése</button>
+            <p id="geoOutput"></p>
+            <h3>Drag and Drop</h3>
+            <div id="dragItem" draggable="true">Húzd ide!</div>
+            <div id="dropZone">Ide dobd!</div>
             <h3>Canvas</h3>
             <canvas id="myCanvas" width="200" height="100"></canvas>
+            <h3>SVG</h3>
+            <svg width="200" height="100">
+                <rect x="0" y="0" width="200" height="100" fill="skyblue" />
+                <circle cx="50" cy="30" r="20" fill="yellow" class="sun" />
+                <rect x="80" y="60" width="60" height="40" fill="brown" />
+                <polygon points="80,60 110,30 140,60" fill="red" />
+                <rect x="0" y="90" width="200" height="10" fill="green" />
+            </svg>
         </div>
     </main>
     <footer>

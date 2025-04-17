@@ -38,13 +38,20 @@
                 <input type="text" id="occupationInput" placeholder="Foglalkozás" required minlength="2" maxlength="50">
                 <button type="submit">Sor hozzáadása</button>
             </form>
+            <h3>Szűrés</h3>
+            <div class="filter-container">
+                <input type="text" id="filterName" placeholder="Szűrés név alapján...">
+                <input type="text" id="filterAge" placeholder="Szűrés életkor alapján...">
+                <input type="text" id="filterCity" placeholder="Szűrés város alapján...">
+                <input type="text" id="filterOccupation" placeholder="Szűrés foglalkozás alapján...">
+            </div>
             <table id="dataTable">
                 <thead>
                     <tr>
-                        <th>Név</th>
-                        <th>Életkor</th>
-                        <th>Város</th>
-                        <th>Foglalkozás</th>
+                        <th class="sortable" data-column="name">Név</th>
+                        <th class="sortable" data-column="age">Életkor</th>
+                        <th class="sortable" data-column="city">Város</th>
+                        <th class="sortable" data-column="occupation">Foglalkozás</th>
                         <th>Műveletek</th>
                     </tr>
                 </thead>

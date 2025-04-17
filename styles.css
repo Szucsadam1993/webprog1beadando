@@ -150,6 +150,52 @@ td button {
     font-size: 0.9em;
 }
 
+/* Szűrési mezők */
+.filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.filter-container input {
+    flex: 1;
+    min-width: 150px;
+}
+
+/* Rendezhető oszlopok */
+th.sortable {
+    cursor: pointer;
+}
+
+th.sortable:hover {
+    background-color: #e0e0e0;
+}
+
+/* Rendezési nyíl */
+th.sortable {
+    position: relative;
+    padding-right: 20px;
+}
+
+th.sortable.asc::after {
+    content: '↑';
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #4CAF50;
+}
+
+th.sortable.desc::after {
+    content: '↓';
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #4CAF50;
+}
+
 /* Canvas */
 canvas {
     max-width: 100%;
@@ -159,6 +205,94 @@ canvas {
 /* SVG */
 svg {
     margin: 20px 0;
+}
+
+/* Drag and Drop */
+#dragItem, #dropZone {
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    display: inline-block;
+}
+
+#dragItem {
+    background-color: #e0e0e0;
+    cursor: move;
+}
+
+#dropZone {
+    background-color: #f9f9f9;
+    min-height: 50px;
+}
+
+/* Alkalmazott kártyák stílusa */
+.employee-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px;
+    width: 250px;
+    display: inline-block;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.employee-card h3 {
+    margin: 0 0 10px;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.employee-card p {
+    margin: 5px 0;
+}
+
+/* Konténer az alkalmazottak számára */
+#employeesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Űrlap stílusa */
+.add-employee-form {
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+    max-width: 300px;
+}
+
+.add-employee-form h3 {
+    margin: 0 0 15px;
+    font-size: 1.2em;
+}
+
+.add-employee-form label {
+    display: block;
+    margin: 5px 0 2px;
+}
+
+.add-employee-form input {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.add-employee-form button {
+    padding: 8px 12px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.add-employee-form button:hover {
+    background-color: #1976D2;
 }
 
 /* Lábléc */

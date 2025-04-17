@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOJS - Web-programozás 1</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="oojs.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Web-programozás-1 Előadás Házi feladat</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Kezdőlap</a></li>
+            <li><a href="table.html">Táblázat</a></li>
+            <li><a href="html5.html">HTML5</a></li>
+            <li><a href="chart.html">ChartJS</a></li>
+            <li><a href="ajax.html">AJAX</a></li>
+            <li><a href="oojs.html" class="active">OOJS</a></li>
+            <li><a href="react.html">React</a></li>
+        </ul>
+    </nav>
+    <main>
+        <aside>
+            <h2>Információ</h2>
+            <p>Objektumorientált JavaScript bemutatása.</p>
+        </aside>
+        <div class="content">
+            <h2>OOJS Példa - Alkalmazottak</h2>
+            <p>Új alkalmazott hozzáadása és megjelenítése.</p>
+            <div class="add-employee-form">
+                <h3>Új alkalmazott hozzáadása</h3>
+                <label for="newName">Név:</label>
+                <input type="text" id="newName" placeholder="Pl. Kovács Péter"><br>
+                <label for="newAddress">Cím:</label>
+                <input type="text" id="newAddress" placeholder="Pl. Budapest, Fő utca 1"><br>
+                <label for="newSalary">Fizetés (Ft):</label>
+                <input type="number" id="newSalary" placeholder="Pl. 300000"><br>
+                <label for="newDepartment">Csoport:</label>
+                <input type="text" id="newDepartment" placeholder="Pl. IT Osztály"><br>
+                <button onclick="addNewEmployee()">Hozzáadás</button>
+            </div>
+            <div id="employeesContainer"></div>
+        </div>
+    </main>
+    <footer>
+        <p>Készítette: Szűcs Ádám (FYOVDT)</p>
+    </footer>
+</body>
+</html>
