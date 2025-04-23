@@ -6,13 +6,23 @@ class EgyetemiDolgozo {
         this.element = null;
     }
 
+    fizetesModosit(emeles) {
+        this.fizetes += emeles;
+        if (this.element) {
+            const fizetesElement = this.element.querySelector('.fizetes');
+            if (fizetesElement) {
+                fizetesElement.textContent = `Fizetés: ${this.fizetes} Ft`;
+            }
+        }
+    }
+
     render() {
-        this.element = document.createElement('div');
+        this.element = document.createElement(('div'));
         this.element.className = 'employee-card';
         this.element.innerHTML = `
             <h3>${this.nev}</h3>
             <p>Cím: ${this.cim}</p>
-            <p>Fizetés: ${this.fizetes} Ft</p>
+            <p class="fizetes">Fizetés: ${this.fizetes} Ft</p>
         `;
         return this.element;
     }
@@ -35,11 +45,18 @@ class Alkalmazott extends EgyetemiDolgozo {
         }
     }
 
-    render() {
+    munkakorokSzama() {
+        return this.munkakorok.length;
+    }
+
+    render(index) {
         this.element = super.render();
         this.element.innerHTML += `
             <p>Csoport: ${this.csoport}</p>
             <p class="munkakorok">Munkakörök: ${this.munkakorok.join(', ')}</p>
+            <button onclick="employees[${index}].fizetesModosit(5000)">Fizetés emelése (5000 Ft)</button>
+            <button onclick="employees[${index}].fizetesModosit(-5000)">Fizetés csökkentése (5000 Ft)</button>
+            <button onclick="deleteEmployee(${index})">Törlés</button>
         `;
         return this.element;
     }
@@ -71,8 +88,8 @@ function renderEmployees() {
     const container = document.getElementById('employeesContainer');
     if (container) {
         container.innerHTML = '';
-        employees.forEach(alkalmazott => {
-            const alkalmazottElement = alkalmazott.render();
+        employees.forEach((alkalmazott, index) => {
+            const alkalmazottElement = alkalmazott.render(index);
             container.appendChild(alkalmazottElement);
         });
     } else {
@@ -99,5 +116,10 @@ window.addNewEmployee = function() {
     document.getElementById('newSalary').value = '';
     document.getElementById('newDepartment').value = '';
 
+    renderEmployees();
+};
+
+window.deleteEmployee = function(index) {
+    employees.splice(index, 1);
     renderEmployees();
 };

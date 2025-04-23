@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AJAX - Web-programozás 1</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="ajax.js" defer></script>
 </head>
 <body>
     <header>
@@ -21,33 +22,40 @@
             <li><a href="react.html">React</a></li>
         </ul>
     </nav>
-    <aside>
-        <h2>Információ</h2>
-        <p>Ez az oldal AJAX segítségével kér le adatokat.</p>
-    </aside>
-    <div class="content">
-        <h2>AJAX Példa</h2>
-        <button onclick="loadData()">Adatok betöltése</button>
-        <ul id="userList"></ul>
-        <script>
-            function loadData() {
-                const xhr = new XMLHttpRequest();
-                xhr.open("GET", "https://jsonplaceholder.typicode.com/users", true);
-                xhr.onload = function () {
-                    if (xhr.status === 200) {
-                        const users = JSON.parse(xhr.responseText);
-                        const userList = document.getElementById("userList");
-                        users.forEach(user => {
-                            const li = document.createElement("li");
-                            li.textContent = user.name;
-                            userList.appendChild(li);
-                        });
-                    }
-                };
-                xhr.send();
-            }
-        </script>
-    </div>
+    <main>
+        <aside>
+            <h2>Információ</h2>
+            <p>AJAX kérések bemutatása.</p>
+        </aside>
+        <div class="content">
+            <h2>AJAX Példa</h2>
+            <h3>Adatok lekérése (Read)</h3>
+            <button onclick="readData()">Összes adat lekérése</button>
+            <div id="readResult"></div>
+            <div id="statsResult"></div>
+            <h3>Új rekord létrehozása (Create)</h3>
+            <input id="createName" placeholder="Név (max 30 karakter)">
+            <input id="createHeight" placeholder="Magasság (max 30 karakter)">
+            <input id="createWeight" placeholder="Súly (max 30 karakter)">
+            <button onclick="createData()">Létrehozás</button>
+            <div id="createMessage" style="color: green;"></div>
+            <h3>Rekord módosítása (Update)</h3>
+            <input id="updateId" type="text" placeholder="ID">
+            <button onclick="getDataForId()">Adatok betöltése</button>
+            <div id="updateForm" style="display: none;">
+                <input id="updateName" placeholder="Név (max 30 karakter)">
+                <input id="updateHeight" placeholder="Magasság (max 30 karakter)">
+                <input id="updateWeight" placeholder="Súly (max 30 karakter)">
+                <button onclick="updateData()">Módosítás</button>
+            </div>
+            <div id="updateMessage" style="color: green;"></div>
+            <h3>Rekord törlése (Delete)</h3>
+            <input id="deleteId" type="text" placeholder="ID">
+            <button onclick="deleteData()">Törlés</button>
+            <div id="deleteMessage" style="color: green;"></div>
+            <div id="errorMessage" style="color: red;"></div>
+        </div>
+    </main>
     <footer>
         <p>Készítette: Szűcs Ádám (FYOVDT)</p>
     </footer>
