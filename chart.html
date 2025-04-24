@@ -23,35 +23,33 @@
             <li><a href="react.html">React</a></li>
         </ul>
     </nav>
-    <main>
-        <aside>
-            <h2>Információ</h2>
-            <p>ChartJS diagramok bemutatása.</p>
-        </aside>
-        <div class="content">
-            <h2>ChartJS Példa</h2>
-            <h3>Adatok bevitele</h3>
-            <input id="labelInput" placeholder="Címke (pl. Január)">
-            <input id="valueInput" placeholder="Érték (pl. 100)" type="number">
-            <button onclick="addData()">Adat hozzáadása</button>
-            <h3>Diagramtípus váltása</h3>
-            <button onclick="setChartType('bar')">Oszlopdiagram</button>
-            <button onclick="setChartType('line')">Vonaldiagram</button>
-            <h3>Adatok szerkesztése</h3>
-            <table id="dataTable" border="1">
-                <thead>
-                    <tr>
-                        <th>Címke</th>
-                        <th>Érték</th>
-                        <th>Műveletek</th>
-                    </tr>
-                </thead>
-                <tbody id="tableBody"></tbody>
-            </table>
-            <h3>Diagram</h3>
-            <canvas id="myChart" width="400" height="200"></canvas>
-        </div>
-    </main>
+    <aside>
+        <h2>Információ</h2>
+        <p>ChartJS diagramok bemutatása.</p>
+    </aside>
+    <div class="content">
+        <h2>ChartJS Példa</h2>
+        <h3>Adatok bevitele</h3>
+        <input id="labelInput" placeholder="Címke (pl. Január)">
+        <input id="valueInput" placeholder="Érték (pl. 100)" type="number">
+        <button onclick="addData()">Adat hozzáadása</button>
+        <h3>Diagramtípus váltása</h3>
+        <button onclick="setChartType('bar')">Oszlopdiagram</button>
+        <button onclick="setChartType('line')">Vonaldiagram</button>
+        <h3>Adatok szerkesztése</h3>
+        <table id="dataTable" border="1">
+            <thead>
+                <tr>
+                    <th>Címke</th>
+                    <th>Érték</th>
+                    <th>Műveletek</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+        <h3>Diagram</h3>
+        <canvas id="myChart" width="400" height="200"></canvas>
+    </div>
     <footer>
         <p>Készítette: Szűcs Ádám (FYOVDT)</p>
     </footer>

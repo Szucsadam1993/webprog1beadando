@@ -1,6 +1,8 @@
+// API végpont és code
 const API_URL = 'http://gamf.nhely.hu/ajax2/';
-const CODE = 'FYOVDTxyz123';
+const CODE = 'FYOVDTxyz123'; // A te Neptun kódod + kitalált kód
 
+// Hibák és üzenetek kezelése
 function showError(message) {
     console.error(message);
     const errorMessageDiv = document.getElementById('errorMessage');
@@ -17,6 +19,7 @@ function showMessage(elementId, message, color = 'green') {
     }
 }
 
+// Segítő függvény a POST kéréshez
 function sendRequest(params) {
     console.log('Kérés indítása:', params);
     const formData = new FormData();
@@ -45,6 +48,7 @@ function sendRequest(params) {
     });
 }
 
+// Validáció a Create és Update műveletekhez
 function validateInput(name, height, weight) {
     const maxLength = 30;
     if (!name || !height || !weight) {
@@ -58,6 +62,7 @@ function validateInput(name, height, weight) {
     return true;
 }
 
+// Read művelet
 function readData() {
     console.log('readData() hívása');
     const readResult = document.getElementById('readResult');
@@ -85,6 +90,7 @@ function readData() {
                 return;
             }
 
+            // Adatok kiírása egymás alá
             let html = '<h4>Rekordok:</h4>';
             data.list.forEach(item => {
                 html += `
@@ -98,6 +104,7 @@ function readData() {
             });
             readResult.innerHTML = html;
 
+            // Height statisztikák
             const heights = data.list.map(item => parseFloat(item.height)).filter(h => !isNaN(h));
             if (heights.length > 0) {
                 const sum = heights.reduce((a, b) => a + b, 0);
@@ -118,6 +125,7 @@ function readData() {
         });
 }
 
+// Create művelet
 function createData() {
     console.log('createData() hívása');
     const name = document.getElementById('createName').value;
@@ -150,9 +158,10 @@ function createData() {
         });
 }
 
+// Adatok betöltése Update-hez
 function getDataForId() {
     console.log('getDataForId() hívása');
-    const id = document.getElementById('updateId').value.trim();
+    const id = document.getElementById('updateId').value.trim(); // Szóközök eltávolítása
     const updateForm = document.getElementById('updateForm');
     const errorMessage = document.getElementById('errorMessage');
 
@@ -171,6 +180,7 @@ function getDataForId() {
             console.log('API válasz a getDataForId-ban:', data);
             console.log('Keresett ID:', id);
 
+            // Az ID-t stringként kezeljük, és a válaszban is stringként hasonlítjuk
             const record = data.list.find(item => String(item.id) === String(id));
             console.log('Talált rekord:', record);
 
@@ -192,6 +202,7 @@ function getDataForId() {
         });
 }
 
+// Update művelet
 function updateData() {
     console.log('updateData() hívása');
     const id = document.getElementById('updateId').value.trim();
@@ -228,6 +239,7 @@ function updateData() {
         });
 }
 
+// Delete művelet
 function deleteData() {
     console.log('deleteData() hívása');
     const id = document.getElementById('deleteId').value.trim();
@@ -259,6 +271,7 @@ function deleteData() {
         });
 }
 
+// Teszt logolás az oldal betöltésekor
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Oldal betöltve, ajax.js fut.');
 });

@@ -22,40 +22,48 @@
             <li><a href="react.html">React</a></li>
         </ul>
     </nav>
-    <main>
-        <aside>
-            <h2>Információ</h2>
-            <p>AJAX kérések bemutatása.</p>
-        </aside>
-        <div class="content">
-            <h2>AJAX Példa</h2>
-            <h3>Adatok lekérése (Read)</h3>
-            <button onclick="readData()">Összes adat lekérése</button>
-            <div id="readResult"></div>
-            <div id="statsResult"></div>
-            <h3>Új rekord létrehozása (Create)</h3>
-            <input id="createName" placeholder="Név (max 30 karakter)">
-            <input id="createHeight" placeholder="Magasság (max 30 karakter)">
-            <input id="createWeight" placeholder="Súly (max 30 karakter)">
-            <button onclick="createData()">Létrehozás</button>
-            <div id="createMessage" style="color: green;"></div>
-            <h3>Rekord módosítása (Update)</h3>
-            <input id="updateId" type="text" placeholder="ID">
-            <button onclick="getDataForId()">Adatok betöltése</button>
-            <div id="updateForm" style="display: none;">
-                <input id="updateName" placeholder="Név (max 30 karakter)">
-                <input id="updateHeight" placeholder="Magasság (max 30 karakter)">
-                <input id="updateWeight" placeholder="Súly (max 30 karakter)">
-                <button onclick="updateData()">Módosítás</button>
-            </div>
-            <div id="updateMessage" style="color: green;"></div>
-            <h3>Rekord törlése (Delete)</h3>
-            <input id="deleteId" type="text" placeholder="ID">
-            <button onclick="deleteData()">Törlés</button>
-            <div id="deleteMessage" style="color: green;"></div>
-            <div id="errorMessage" style="color: red;"></div>
+    <aside>
+        <h2>Információ</h2>
+        <p>AJAX kérések bemutatása.</p>
+    </aside>
+    <div class="content">
+        <h2>AJAX Példa</h2>
+
+        <!-- Read -->
+        <h3>Adatok lekérése (Read)</h3>
+        <button onclick="readData()">Összes adat lekérése</button>
+        <div id="readResult"></div>
+        <div id="statsResult"></div>
+
+        <!-- Create -->
+        <h3>Új rekord létrehozása (Create)</h3>
+        <input id="createName" placeholder="Név (max 30 karakter)">
+        <input id="createHeight" placeholder="Magasság (max 30 karakter)">
+        <input id="createWeight" placeholder="Súly (max 30 karakter)">
+        <button onclick="createData()">Létrehozás</button>
+        <div id="createMessage" style="color: green;"></div>
+
+        <!-- Update -->
+        <h3>Rekord módosítása (Update)</h3>
+        <input id="updateId" type="text" placeholder="ID">
+        <button onclick="getDataForId()">Adatok betöltése</button>
+        <div id="updateForm" style="display: none;">
+            <input id="updateName" placeholder="Név (max 30 karakter)">
+            <input id="updateHeight" placeholder="Magasság (max 30 karakter)">
+            <input id="updateWeight" placeholder="Súly (max 30 karakter)">
+            <button onclick="updateData()">Módosítás</button>
         </div>
-    </main>
+        <div id="updateMessage" style="color: green;"></div>
+
+        <!-- Delete -->
+        <h3>Rekord törlése (Delete)</h3>
+        <input id="deleteId" type="text" placeholder="ID">
+        <button onclick="deleteData()">Törlés</button>
+        <div id="deleteMessage" style="color: green;"></div>
+
+        <!-- Hibaüzenetek -->
+        <div id="errorMessage" style="color: red;"></div>
+    </div>
     <footer>
         <p>Készítette: Szűcs Ádám (FYOVDT)</p>
     </footer>

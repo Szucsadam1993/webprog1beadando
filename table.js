@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // DOM elemek lekérdezése
     const dataTableBody = document.getElementById('dataTableBody');
     const dataForm = document.getElementById('dataForm');
     const filterName = document.getElementById('filterName');
@@ -6,11 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const filterCity = document.getElementById('filterCity');
     const filterOccupation = document.getElementById('filterOccupation');
 
+    // Ellenőrizzük, hogy minden szükséges elem létezik-e
     if (!dataTableBody || !dataForm || !filterName || !filterAge || !filterCity || !filterOccupation) {
         console.error('Hiba: Nem található egy vagy több szükséges DOM elem!');
         return;
     }
 
+    // Adatok betöltése a localStorage-ből, vagy alapértelmezett adatok használata
     let data = JSON.parse(localStorage.getItem('tableData')) || [
         { name: 'Lilla', age: 15, city: 'Budapest', occupation: 'Tanuló' },
         { name: 'Anna', age: 22, city: 'Debrecen', occupation: 'Egyetemi hallgató' },
@@ -20,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let editingIndex = null;
 
+    // Táblázat renderelése
     function renderTable(filteredData = data) {
         dataTableBody.innerHTML = '';
         filteredData.forEach((item, index) => {
@@ -42,6 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Új sor hozzáadása vagy szerkesztés
     dataForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const name = document.getElementById('nameInput').value.trim();
@@ -49,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const city = document.getElementById('cityInput').value.trim();
         const occupation = document.getElementById('occupationInput').value.trim();
 
+        // Validáció ellenőrzése
         if (!dataForm.checkValidity()) {
             dataForm.reportValidity();
             return;
@@ -57,17 +63,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const newEntry = { name, age, city, occupation };
 
         if (editingIndex !== null) {
+            // Szerkesztés
             data[editingIndex] = newEntry;
             editingIndex = null;
         } else {
+            // Új sor hozzáadása
             data.push(newEntry);
         }
 
+        // Mentés a localStorage-be
         localStorage.setItem('tableData', JSON.stringify(data));
         renderTable();
         dataForm.reset();
     });
 
+    // Sor szerkesztése
     function editRow(index) {
         editingIndex = index;
         const item = data[index];
@@ -77,6 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('occupationInput').value = item.occupation;
     }
 
+    // Sor törlése
     function deleteRow(index) {
         if (confirm('Biztosan törölni szeretnéd ezt a sort?')) {
             data.splice(index, 1);
@@ -87,6 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Rendezés
     document.querySelectorAll('.sortable').forEach(header => {
         header.addEventListener('click', () => {
             const column = header.dataset.column;
@@ -107,6 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Szűrés
     function applyFilters() {
         const nameFilter = filterName.value.toLowerCase();
         const ageFilter = filterAge.value;
@@ -130,5 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
     filterCity.addEventListener('input', applyFilters);
     filterOccupation.addEventListener('input', applyFilters);
 
+    // Kezdeti renderelés
     renderTable();
 });

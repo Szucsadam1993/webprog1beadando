@@ -1,3 +1,4 @@
+// Web Storage (localStorage) műveletek
 function saveStorage() {
     const input = document.getElementById('storageInput').value;
     if (input) {
@@ -25,6 +26,14 @@ function loadStorageData() {
         storageData.forEach(item => {
             const li = document.createElement('li');
             li.textContent = `${item.data} (Mentve: ${item.created_at})`;
+            const editButton = document.createElement('button');
+            editButton.textContent = 'Módosít';
+            editButton.onclick = () => editStorage(item.id, item.data);
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Töröl';
+            deleteButton.onclick = () => deleteStorage(item.id);
+            li.appendChild(editButton);
+            li.appendChild(deleteButton);
             ul.appendChild(li);
         });
         output.appendChild(ul);
@@ -33,8 +42,34 @@ function loadStorageData() {
     }
 }
 
+function editStorage(id, currentData) {
+    const newData = prompt('Új adat:', currentData);
+    if (newData !== null && newData.trim() !== '') {
+        let storageData = JSON.parse(localStorage.getItem('storageData')) || [];
+        const index = storageData.findIndex(item => item.id === id);
+        if (index !== -1) {
+            storageData[index].data = newData;
+            storageData[index].created_at = new Date().toISOString();
+            localStorage.setItem('storageData', JSON.stringify(storageData));
+            alert("Adat sikeresen módosítva!");
+            loadStorageData();
+        }
+    }
+}
+
+function deleteStorage(id) {
+    if (confirm('Biztosan törölni szeretnéd ezt az adatot?')) {
+        let storageData = JSON.parse(localStorage.getItem('storageData')) || [];
+        storageData = storageData.filter(item => item.id !== id);
+        localStorage.setItem('storageData', JSON.stringify(storageData));
+        alert("Adat sikeresen törölve!");
+        loadStorageData();
+    }
+}
+
 document.addEventListener('DOMContentLoaded', loadStorageData);
 
+// Web Workers
 function startWorker() {
     try {
         console.log('Starting Web Worker...');
@@ -55,6 +90,7 @@ function startWorker() {
     }
 }
 
+// Server-Sent Events (SSE)
 function startSSE() {
     if (typeof(EventSource) !== "undefined") {
         const source = new EventSource('server.php');
@@ -72,8 +108,10 @@ function startSSE() {
     }
 }
 
+// SSE indítása az oldal betöltésekor
 document.addEventListener('DOMContentLoaded', startSSE);
 
+// Geolocation API
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
@@ -90,6 +128,7 @@ function getLocation() {
     }
 }
 
+// Drag and Drop
 const dragItem = document.getElementById('dragItem');
 const dropZone = document.getElementById('dropZone');
 
@@ -107,6 +146,7 @@ dropZone.addEventListener('drop', (e) => {
     dropZone.appendChild(document.getElementById(id));
 });
 
+// Canvas
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
 let x = 10;

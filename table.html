@@ -16,92 +16,93 @@
             <li><a href="index.html">Kezdőlap</a></li>
             <li><a href="table.html" class="active">Táblázat</a></li>
             <li><a href="html5.html">HTML5</a></li>
-            <li><a href="chart.html">ChartJS</a></li>
+            <li><a href="chartjs.html">ChartJS</a></li>
             <li><a href="ajax.html">AJAX</a></li>
             <li><a href="oojs.html">OOJS</a></li>
             <li><a href="react.html">React</a></li>
         </ul>
     </nav>
-    <main>
-        <aside>
-            <h2>Információ</h2>
-            <p>Táblázat kezelése JavaScripttel.</p>
-        </aside>
-        <div class="content">
-            <h2>Táblázat Példa</h2>
-            <p>Adatok kezelése JavaScripttel.</p>
-            <h3>Adatok bevitele</h3>
-            <form id="dataForm">
-                <input type="text" id="nameInput" placeholder="Név" required minlength="2" maxlength="50">
-                <input type="number" id="ageInput" placeholder="Életkor" required min="1" max="120">
-                <input type="text" id="cityInput" placeholder="Város" required minlength="2" maxlength="50">
-                <input type="text" id="occupationInput" placeholder="Foglalkozás" required minlength="2" maxlength="50">
-                <button type="submit">Sor hozzáadása</button>
-            </form>
-            <h3>Szűrés</h3>
-            <div class="filter-container">
-                <input type="text" id="filterName" placeholder="Szűrés név alapján...">
-                <input type="text" id="filterAge" placeholder="Szűrés életkor alapján...">
-                <input type="text" id="filterCity" placeholder="Szűrés város alapján...">
-                <input type="text" id="filterOccupation" placeholder="Szűrés foglalkozás alapján...">
-            </div>
-            <table id="dataTable">
-                <thead>
-                    <tr>
-                        <th class="sortable" data-column="name">Név</th>
-                        <th class="sortable" data-column="age">Életkor</th>
-                        <th class="sortable" data-column="city">Város</th>
-                        <th class="sortable" data-column="occupation">Foglalkozás</th>
-                        <th>Műveletek</th>
-                    </tr>
-                </thead>
-                <tbody id="dataTableBody">
-                    <tr>
-                        <td>Lilla</td>
-                        <td>15</td>
-                        <td>Budapest</td>
-                        <td>Tanuló</td>
-                        <td>
-                            <button class="edit-btn">Szerkeszt</button>
-                            <button class="delete-btn">Töröl</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Anna</td>
-                        <td>22</td>
-                        <td>Debrecen</td>
-                        <td>Egyetemi hallgató</td>
-                        <td>
-                            <button class="edit-btn">Szerkeszt</button>
-                            <button class="delete-btn">Töröl</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Péter</td>
-                        <td>30</td>
-                        <td>Szeged</td>
-                        <td>Programozó</td>
-                        <td>
-                            <button class="edit-btn">Szerkeszt</button>
-                            <button class="delete-btn">Töröl</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Eszter</td>
-                        <td>28</td>
-                        <td>Pécs</td>
-                        <td>Marketinges</td>
-                        <td>
-                            <button class="edit-btn">Szerkeszt</button>
-                            <button class="delete-btn">Töröl</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+    <aside>
+        <h2>Információ</h2>
+        <p>Táblázat kezelése JavaScripttel.</p>
+    </aside>
+    <div class="content">
+        <h2>Táblázat Példa</h2>
+        <p>Adatok kezelése JavaScripttel.</p>
+
+        <h3>Adatok bevitele</h3>
+        <form id="dataForm">
+            <input type="text" id="nameInput" placeholder="Név" required minlength="2" maxlength="50">
+            <input type="number" id="ageInput" placeholder="Életkor" required min="1" max="120">
+            <input type="text" id="cityInput" placeholder="Város" required minlength="2" maxlength="50">
+            <input type="text" id="occupationInput" placeholder="Foglalkozás" required minlength="2" maxlength="50">
+            <button type="submit">Sor hozzáadása</button>
+        </form>
+
+        <h3>Szűrés</h3>
+        <div class="filter-container">
+            <input type="text" id="filterName" placeholder="Szűrés név alapján...">
+            <input type="text" id="filterAge" placeholder="Szűrés életkor alapján...">
+            <input type="text" id="filterCity" placeholder="Szűrés város alapján...">
+            <input type="text" id="filterOccupation" placeholder="Szűrés foglalkozás alapján...">
         </div>
-    </main>
+
+        <table id="dataTable">
+            <thead>
+                <tr>
+                    <th class="sortable" data-column="name">Név</th>
+                    <th class="sortable" data-column="age">Életkor</th>
+                    <th class="sortable" data-column="city">Város</th>
+                    <th class="sortable" data-column="occupation">Foglalkozás</th>
+                    <th>Műveletek</th>
+                </tr>
+            </thead>
+            <tbody id="dataTableBody">
+                <tr>
+                    <td>Lilla</td>
+                    <td>15</td>
+                    <td>Budapest</td>
+                    <td>Tanuló</td>
+                    <td>
+                        <button class="edit-btn">Szerkeszt</button>
+                        <button class="delete-btn">Töröl</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Anna</td>
+                    <td>22</td>
+                    <td>Debrecen</td>
+                    <td>Egyetemi hallgató</td>
+                    <td>
+                        <button class="edit-btn">Szerkeszt</button>
+                        <button class="delete-btn">Töröl</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Péter</td>
+                    <td>30</td>
+                    <td>Szeged</td>
+                    <td>Programozó</td>
+                    <td>
+                        <button class="edit-btn">Szerkeszt</button>
+                        <button class="delete-btn">Töröl</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Eszter</td>
+                    <td>28</td>
+                    <td>Pécs</td>
+                    <td>Marketinges</td>
+                    <td>
+                        <button class="edit-btn">Szerkeszt</button>
+                        <button class="delete-btn">Töröl</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <footer>
-        <p>Készítette: Szűcs Ádám (FYOVDT)</p>
+        <p> Készítette: Szűcs Ádám (FYOVDT).</p>
     </footer>
 </body>
 </html>
