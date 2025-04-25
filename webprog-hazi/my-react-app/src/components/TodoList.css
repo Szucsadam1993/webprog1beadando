@@ -1,0 +1,108 @@
+.todo-list {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.todo-list h3 {
+  text-align: center;
+  color: #333;
+}
+
+.todo-list .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.todo-list .form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.todo-list .form-group input[type="date"] {
+  color: #666;
+}
+
+.todo-list .form-group input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
+
+.todo-list .form-group button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.todo-list .form-group button:hover {
+  background-color: #45a049;
+}
+
+.todo-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.todo-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: white;
+  border: 1px solid #999;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+
+.todo-item.completed {
+  background-color: #e0ffe0;
+}
+
+.todo-item.completed .todo-text {
+  text-decoration: line-through;
+}
+
+.todo-item.completed:hover {
+  transform: scale(1.02);
+}
+
+.todo-details {
+  flex: 1;
+}
+
+.todo-text {
+  font-size: 16px;
+  margin: 0 0 5px 0;
+}
+
+.todo-date {
+  font-size: 12px;
+  color: #666;
+  margin: 0 0 5px 0;
+}
+
+.todo-note {
+  font-size: 12px;
+  color: #888;
+  font-style: italic;
+  margin: 0;
+}
+
+.todo-item button {
+  background-color: #f44336;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.todo-item button:hover {
+  background-color: #da190b;
+}
