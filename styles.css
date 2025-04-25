@@ -1,0 +1,105 @@
+/* Alapértelmezett stílusok az egész oldalra */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Fejléc */
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 2em;
+}
+
+/* Navigáció */
+nav {
+    background-color: #333;
+    padding: 10px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    background-color: #4CAF50;
+}
+
+/* Main konténer */
+main {
+    display: flex;
+    flex: 1;
+}
+
+/* Oldalsáv */
+aside {
+    width: 20%;
+    padding: 20px;
+    background-color: #e0e0e0;
+}
+
+/* Tartalom */
+.content {
+    width: 80%;
+    padding: 20px;
+}
+
+.content h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+/* Táblázatok */
+table {
+    border-collapse: collapse;
+    margin: 20px 0;
+    width: 100%;
+    max-width: 600px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Lábléc */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
